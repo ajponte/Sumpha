@@ -1,6 +1,7 @@
 # [START imports]
 import os
 import urllib
+import cgi
 
 from google.appengine.api import users
 from google.appengine.ext import ndb
@@ -20,11 +21,15 @@ JINJA_ENVIRONMENT = jinja2.Environment(
 
 DEFAULT_GUESTBOOK_NAME = 'default_guestbook'
 TEST_QUERY = "http://api.meetup.com/2/open_events?status=upcoming&radius=25.0&state=ca&and_text=False&limited_events=False&text=jazz+music&desc=False&city=san+francisco&offset=0&photo-host=public&format=json&page=20&country=us&sig_id=14329201&sig=e31eef1653769211053be6849d5285b63f0593f6"
+
 class MainHandler(webapp2.RequestHandler):
     def get(self):
         data = requests.get(TEST_QUERY).text
         jsonResults = json.decode(data)
-        #self.response.write(jsonResults['results'][0]['name'])
+        i = 0
+        while i < len(jsonResults['results']):
+            self.response.write(jsonResults['results'][i]['name'])
+            i += 1
 
 
 # We set a parent key on the 'Greetings' to ensure that they are all in the same
@@ -72,6 +77,7 @@ class MainPage(webapp2.RequestHandler):
         template = JINJA_ENVIRONMENT.get_template('index.html', {})
         self.response.write(template.render(template_values))
 
+
 # [END main_page]
 
 
@@ -94,10 +100,13 @@ class Guestbook(webapp2.RequestHandler):
 
         query_params = {'guestbook_name': guestbook_name}
         self.redirect('/?' + urllib.urlencode(query_params))
+        self.response.write(cgi.escape(self.request.get('query')))
+
+
 
 
 application = webapp2.WSGIApplication([
-    ('/', MainHandler),
     ('/', MainPage),
     ('/sign', Guestbook),
+    ('/', MainHandler),
 ], debug=True)
