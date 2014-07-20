@@ -10,19 +10,18 @@
     <head>
         <title> Sumpha Mockup Page </title>
         <!-- Bootstrap CSS files -->
-        <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css" type="text/css">
+        <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css" type="text/css">
+        <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css" type="text/css">
         <style>
             body {
                     margin: 0;
                     background: url("http://s25.postimg.org/vy9kcjptb/canstockphoto1451483.jpg");
-                    background-color: black;
                     background-size: 1440px 800px;
                     background-repeat:no-repeat;
-                    text-color: rgba(0, 0, 0, 1);;
             }
 
             .myBackground {
-                background-color: rgba(176,176,176, 0.3);
+                background-color: rgba(176,176,176, 0.5);
                 color: inherit;
             }
 
@@ -45,7 +44,7 @@
     <body>
 
     <!-- Create an "about" pop-up when clicking on the logo -->
-    <div class="modal fade" id="myModal">
+    <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
         <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header">
@@ -53,12 +52,21 @@
                         <span aria-hidden="true">&times;</span>
                         <span class="sr-only">Close</span>
                     </button>
-                    <h4 class="modal-title"> About </h4>
+                    <h4 class="modal-title"> About Sumpha </h4>
                 </div>
                 <div class="modal-body">
                     <p>
-                        This application was developed by Alan, Felicia, Ramin, and Karlina
-                        at the AngelHack hackathon in Silicon Valley (2014).  
+                        Wake up in the morning and don't have any plans? 
+                        Finished a huge project and want to celebrate by attending a random event?
+                        Then search for something imaginative with Sumpha, a new meta events website.
+                    </p>
+                    <p>
+                        <strong>Sumpha</strong> is the anglicized word for “event” in Greek (for GEEKs).
+                        For those trivia folks, the word is <a href='https://translate.google.com/#auto/el/event'><img src='http://www.facebook.com/l.php?u=https%3A%2F%2Fdrive.google.com%2Ffile%2Fd%2F0B0tg9iMY8Wy9a1RsT1JtYTUzbkE%2Fedit%3Fusp%3Dsharing&h=kAQGtg0zn'></a>.
+                    </p>
+                    <p>
+                        <strong>How to use Sumpha!</strong><br>
+                        The splashpage shows random events. Your search results will pull events from Meetup.com and Eventbrite
                     </p>
                     <p>
                         <a href="http://www.hackathon.io/sympha">
@@ -67,19 +75,20 @@
                     </p>
                 </div>
                <div class="modal-footer">
-                   <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                   <button type="button" class="btn btn-primary" data-dismiss="modal">Close</button>
                 </div>
             </div>
         </div>
     </div>
 
     <!-- Top level container from bootstrap -->
-    <div class="container myBackground">
+    <div class="container">
 
         <!-- outermost row to control page width -->
         <div class="row">
+            <div class="col-xs-offset-2 col-xs-8 myBackground"> 
             <!-- Create an "inverse" (dark) navigation bar. -->
-            <div class="container">
+                <div class="row">
                 <div class="navbar navbar-inverse navbar-static-top" role="navigation">
                     <div class="container-fluid">
                         <div class="navbar-header">
@@ -92,18 +101,14 @@
                             <a class="navbar-left" href="#myModal"> 
                                 <img src="http://s25.postimg.org/o75pggrxn/sumpha_Home.png" alt="home">
                             </a>
-                            <a class="navbar-brand navbar-right" href="#myModal"> 
-                                sympha 
+                            <a class="navbar-brand navbar-right"  data-toggle="modal" data-target="#myModal"> 
+                                Sumpha 
                             </a>
                         </div>
                     </div>
                 </div>
-            </div>
-        </div>
-
-        <div class="row">
-            <div class="container myBackground" style="border-style:none;background-color: #B0B0B0">
-                    
+                </div>
+            
                     <!-- first row with page jumbotron -->
                     <div class="row">
                         <div class="jumbotron col-md-12"> 
@@ -131,17 +136,17 @@
                                     <li data-target="#carousel-example-generic" data-slide-to="2" class="active"></li>
                                 </ol>
                                 <div class="carousel-inner">
-                                    <div class="item">
+                                    <div class="item well active">
                                         <h1>Event 1</h1>
                                         <p>About event 1</p>
                                         <p>DATE: 01/01/2015</p>
                                     </div>
-                                    <div class="item">
+                                    <div class="item well">
                                         <h1>Event 2</h1>
                                         <p>About event 2</p>
                                         <p>DATE: 01/01/2015</p>
                                     </div>
-                                    <div class="item active">
+                                    <div class="item well">
                                         <h1>Event 3</h1>
                                         <p>About event 3</p>
                                         <p>DATE: 01/01/2015</p>
@@ -165,7 +170,7 @@
                     * 
                     ************************************************************
                     -->
-                    
+                    <!--
                     <div class="row">
                         <div class="col-xs-12">
                             <div class="panel panel-primary boxRounder">
@@ -178,10 +183,10 @@
                                 </div>
                             </div>
                         </div>
-                    </div>
+                    </div>-->
                     
                     <!-- End of first dummy element -->
-                    
+                    <!--
                     <div class="row">
                         <div class="col-xs-12">
                             <div class="panel panel-primary boxRounder">
@@ -207,15 +212,15 @@
                                 </div>
                             </div>
                         </div>
-                    </div>
+                    </div> -->
                 </div>
             </div>
         </div>
-        <!-- Include Bootstrap JavaScript plugins. -->
-        <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
-
         <!-- Include JQuery for Bootstrap's JavaScript plugins. -->
+        <!-- THIS MUST BE FIRST BEFORE THE BOOTSTRAP JS FILE -->
         <script src="https://code.jquery.com/jquery.js"></script>
+        <!-- Include Bootstrap JavaScript plugins. -->
+        <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
         <script>
             $( document ).ready(function() {
                 $("#carousel-example-generic").carousel();
