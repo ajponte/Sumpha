@@ -1,13 +1,16 @@
 <!DOCTYPE html>
-<!--
-Sumpha Mockup Page V 1.0
--->
+<!--======================================================================================-->
+<!-- index.html                                                                           -->
+<!-- Created by Karlina Beringer and Ramin Tawakuli. July 19 and 20, 2014.                -->
+<!--                                                                                      -->
+<!-- The user interface for the Sumpha app.                                               -->
+<!-- Learns about your interests to suggest the events you might want to participate in.  -->
+<!--======================================================================================-->
 <html>
     <head>
-        <title>Sumpha Mockup Page</title>
+        <title> Sumpha Mockup Page </title>
         <!-- Bootstrap CSS files -->
-        <link rel="stylesheet" href="css/bootstrap.min.css" type="text/css">
-        <link rel="stylesheet" href="css/bootstrap-theme.min.css" type="text/css">
+        <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css" type="text/css">
         <style>
             body {
                 background-color:#AAC8c1;
@@ -29,6 +32,29 @@ Sumpha Mockup Page V 1.0
         </style>
     </head>
     <body>
+
+      <!-- Create an "inverse" (dark) navigation bar. -->
+      <div class="container">
+        <div class="navbar navbar-inverse navbar-static-top" role="navigation">
+            <div class="container-fluid">
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                        <span class="sr-only">Toggle navigation</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    <a class="navbar-left" href="#"> 
+                        <img src="http://s25.postimg.org/o75pggrxn/sumpha_Home.png" alt="home">
+                    </a>
+                    <a class="navbar-brand navbar-right" href="#"> 
+                        sympha 
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+
         <!-- Top level container from bootstrap -->
         <div class="container">
             <!-- outermost row to control page width -->
@@ -142,10 +168,11 @@ Sumpha Mockup Page V 1.0
                 </div>
             </div>
         </div>
-        <!-- Bootstrap and jQuery files -->
-        <!-- DO NOT SWITCH THE ORDER OF THESE INCLUDES -->
-        <script src="js/jquery-2.1.1.min.js" type="text/javascript"></script>
-        <script src="js/bootstrap.min.js" type="text/javascript"></script>
+        <!-- Include Bootstrap JavaScript plugins. -->
+        <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+
+        <!-- Include JQuery for Bootstrap's JavaScript plugins. -->
+        <script src="https://code.jquery.com/jquery.js"></script>
         <script>
             $( document ).ready(function() {
                 $("#carousel-example-generic").carousel();
