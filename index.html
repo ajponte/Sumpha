@@ -6,15 +6,26 @@
 <!-- The user interface for the Sumpha app.                                               -->
 <!-- Learns about your interests to suggest the events you might want to participate in.  -->
 <!--======================================================================================-->
-<html>
+<html lang="en">
     <head>
         <title> Sumpha Mockup Page </title>
         <!-- Bootstrap CSS files -->
         <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css" type="text/css">
         <style>
             body {
-                background-color:#AAC8c1;
+                    margin: 0;
+                    background: url("http://s25.postimg.org/vy9kcjptb/canstockphoto1451483.jpg");
+                    background-color: black;
+                    background-size: 1440px 800px;
+                    background-repeat:no-repeat;
+                    text-color: rgba(0, 0, 0, 1);;
             }
+
+            .myBackground {
+                background-color: rgba(176,176,176, 0.3);
+                color: inherit;
+            }
+
             .boxRounder {
                 -webkit-border-radius: 15px;
                 -moz-border-radius: 15px;
@@ -33,33 +44,65 @@
     </head>
     <body>
 
-      <!-- Create an "inverse" (dark) navigation bar. -->
-      <div class="container">
-        <div class="navbar navbar-inverse navbar-static-top" role="navigation">
-            <div class="container-fluid">
-                <div class="navbar-header">
-                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-                        <span class="sr-only">Toggle navigation</span>
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
+    <!-- Create an "about" pop-up when clicking on the logo -->
+    <div class="modal fade" id="myModal">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">
+                        <span aria-hidden="true">&times;</span>
+                        <span class="sr-only">Close</span>
                     </button>
-                    <a class="navbar-left" href="#"> 
-                        <img src="http://s25.postimg.org/o75pggrxn/sumpha_Home.png" alt="home">
-                    </a>
-                    <a class="navbar-brand navbar-right" href="#"> 
-                        sympha 
-                    </a>
+                    <h4 class="modal-title"> About </h4>
+                </div>
+                <div class="modal-body">
+                    <p>
+                        This application was developed by Alan, Felicia, Ramin, and Karlina
+                        at the AngelHack hackathon in Silicon Valley (2014).  
+                    </p>
+                    <p>
+                        <a href="http://www.hackathon.io/sympha">
+                            <img src="http://postimg.org/image/gycmayjjf/" alt="AngelHack Logo" class="img-rounded">
+                        </a>
+                    </p>
+                </div>
+               <div class="modal-footer">
+                   <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
                 </div>
             </div>
         </div>
     </div>
 
-        <!-- Top level container from bootstrap -->
-        <div class="container">
-            <!-- outermost row to control page width -->
-            <div class="row">
-                <div class="col-md-8 col-md-offset-2" style="border-style:none;background-color: #d0e9c6">
+    <!-- Top level container from bootstrap -->
+    <div class="container myBackground">
+
+        <!-- outermost row to control page width -->
+        <div class="row">
+            <!-- Create an "inverse" (dark) navigation bar. -->
+            <div class="container">
+                <div class="navbar navbar-inverse navbar-static-top" role="navigation">
+                    <div class="container-fluid">
+                        <div class="navbar-header">
+                            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                                <span class="sr-only">Toggle navigation</span>
+                                <span class="icon-bar"></span>
+                                <span class="icon-bar"></span>
+                                <span class="icon-bar"></span>
+                            </button>
+                            <a class="navbar-left" href="#myModal"> 
+                                <img src="http://s25.postimg.org/o75pggrxn/sumpha_Home.png" alt="home">
+                            </a>
+                            <a class="navbar-brand navbar-right" href="#myModal"> 
+                                sympha 
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="container myBackground" style="border-style:none;background-color: #B0B0B0">
                     
                     <!-- first row with page jumbotron -->
                     <div class="row">
