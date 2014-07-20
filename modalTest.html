@@ -1,0 +1,94 @@
+<!--=======================================-->
+<!-- popUp.html                            -->
+<!-- Twitter Bootstrap popup example.      -->
+<!--=======================================-->
+<html>
+  <head>
+  	<title> popUp Example </title>
+
+  		<!--
+            ************************************************************
+             * 
+             * Bootstrap files are located in same directory as 
+             * this HTML file. 
+             *
+             * Alternatively, you can use the CDN link to these 
+             * plugins instead of using local Bootstrap files.
+             * 
+             ************************************************************
+        -->
+		<link href="bootstrap_3.2.0/css/bootstrap.min.css" rel="stylesheet">
+
+		<style>
+            body {
+                    margin: 0;
+                    background: url("http://s25.postimg.org/vy9kcjptb/canstockphoto1451483.jpg");
+                    background-size: 1440px 800px;
+                    background-repeat:no-repeat;
+            }
+        </style>
+
+  </head>
+  <body>
+
+  	<!-- Button trigger modal -->
+    <button class="btn btn-primary btn-lg" data-toggle="modal" data-target="#myModal">
+        Launch demo modal
+    </button>
+
+    <!-- Pop Up -->
+    <div class="modal fade">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">
+                    	<span aria-hidden="true">&times;</span>
+                    	<span class="sr-only">Close</span>
+                    </button>
+                    <h4 class="modal-title">Modal title</h4>
+                </div>
+                <div class="modal-body">
+                    <p>
+                        This application was developed by Alan, Felicia, Ramin, and Karlina
+                        at the AngelHack hackathon in Silicon Valley (2014).  
+                    </p>
+                    <p>
+                        <a href="http://www.hackathon.io/sympha">
+                            <img src="http://postimg.org/image/gycmayjjf/" alt="AngelHack Logo" class="img-rounded">
+                        </a>
+                    </p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal"> Close </button>
+                </div>
+            </div><!-- /.modal-content -->
+        </div><!-- /.modal-dialog -->
+    </div><!-- /.modal -->
+
+    <!-- Modal -->
+    <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">
+            	        <span aria-hidden="true">&times;</span>
+            	        <span class="sr-only">Close</span>
+                    </button>
+                    <h4 class="modal-title" id="myModalLabel">Modal title</h4>
+                </div>
+            <div class="modal-body">
+        </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-primary">Save changes</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Include JQuery for Bootstrap's JavaScript plugins. -->
+    <script src="https://code.jquery.com/jquery.js"></script>
+		   
+	<!-- Include Bootstrap JavaScript plugins. -->
+	<script src="js/bootstrap.min.js"></script>
+  </body>
+</html>
