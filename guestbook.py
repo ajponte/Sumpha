@@ -24,7 +24,7 @@ class MainHandler(webapp2.RequestHandler):
     def get(self):
         data = requests.get(TEST_QUERY).text
         jsonResults = json.decode(data)
-        self.response.write(jsonResults['results'][0]['name'])
+        #self.response.write(jsonResults['results'][0]['name'])
 
 
 # We set a parent key on the 'Greetings' to ensure that they are all in the same
