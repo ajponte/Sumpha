@@ -1,15 +1,30 @@
 <!DOCTYPE html>
-{% autoescape true %}
-<html>
+<!--======================================================================================-->
+<!-- index.html                                                                           -->
+<!-- Created by Karlina Beringer and Ramin Tawakuli. July 19 and 20, 2014.                -->
+<!--                                                                                      -->
+<!-- The user interface for the Sumpha app.                                               -->
+<!-- Learns about your interests to suggest the events you might want to participate in.  -->
+<!--======================================================================================-->
+<html lang="en">
     <head>
-        <title>Sumpha</title>
+        <title> Sumpha Mockup Page </title>
         <!-- Bootstrap CSS files -->
         <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css" type="text/css">
         <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css" type="text/css">
         <style>
             body {
-                background-color:#AAC8c1;
+                    margin: 0;
+                    background: url("http://s25.postimg.org/vy9kcjptb/canstockphoto1451483.jpg");
+                    background-size: Cover;
+                    background-repeat:no-repeat;
             }
+
+            .myBackground {
+                background-color: rgba(176,176,176, 0.5);
+                color: inherit;
+            }
+
             .boxRounder {
                 -webkit-border-radius: 15px;
                 -moz-border-radius: 15px;
@@ -27,23 +42,84 @@
         </style>
     </head>
     <body>
-        <!-- Top level container from bootstrap -->
-        <div class="container">
-            <!-- outermost row to control page width -->
-            <div class="row">
-                <div class="col-md-8 col-md-offset-2" style="border-style:none;background-color: #d0e9c6">
-                    
+
+    <!-- Create an "about" pop-up when clicking on the logo -->
+    <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">
+                        <span aria-hidden="true">&times;</span>
+                        <span class="sr-only">Close</span>
+                    </button>
+                    <h4 class="modal-title"> About Sumpha </h4>
+                </div>
+                <div class="modal-body">
+                    <p>
+                        Wake up in the morning and don't have any plans? 
+                        Finished a huge project and want to celebrate by attending a random event?
+                        Then search for something imaginative with Sumpha, a new meta events website.
+                    </p>
+                    <p>
+                        <strong>Sumpha</strong> is the anglicized word for “event” in Greek (for GEEKs).
+                        For those trivia folks, the word is <a href='https://translate.google.com/#auto/el/event'><img src='http://www.facebook.com/l.php?u=https%3A%2F%2Fdrive.google.com%2Ffile%2Fd%2F0B0tg9iMY8Wy9a1RsT1JtYTUzbkE%2Fedit%3Fusp%3Dsharing&h=kAQGtg0zn'></a>.
+                    </p>
+                    <p>
+                        <strong>How to use Sumpha!</strong><br>
+                        The splashpage shows random events. Your search results will pull events from Meetup.com and Eventbrite
+                    </p>
+                    <p>
+                        <a href="http://www.hackathon.io/sympha">
+                            <img src="http://postimg.org/image/gycmayjjf/" alt="AngelHack Logo" class="img-rounded">
+                        </a>
+                    </p>
+                </div>
+               <div class="modal-footer">
+                   <button type="button" class="btn btn-primary" data-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Top level container from bootstrap -->
+    <div class="container">
+
+        <!-- outermost row to control page width -->
+        <div class="row">
+            <div class="col-xs-offset-2 col-xs-8 myBackground"> 
+            <!-- Create an "inverse" (dark) navigation bar. -->
+                <div class="row">
+                <div class="navbar navbar-inverse navbar-static-top" role="navigation">
+                    <div class="container-fluid">
+                        <div class="navbar-header">
+                            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                                <span class="sr-only">Toggle navigation</span>
+                                <span class="icon-bar"></span>
+                                <span class="icon-bar"></span>
+                                <span class="icon-bar"></span>
+                            </button>
+                            <a class="navbar-left" href="#myModal"> 
+                                <img src="http://s25.postimg.org/o75pggrxn/sumpha_Home.png" alt="home">
+                            </a>
+                            <a class="navbar-brand navbar-right"  data-toggle="modal" data-target="#myModal"> 
+                                Sumpha 
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                </div>
+            
                     <!-- first row with page jumbotron -->
                     <div class="row">
                         <div class="jumbotron col-md-12"> 
                             <h1>Sumpha!</h1>
                             <p>An event randomizer for bored people!</p>
                             <div class="row">
-                                <form role="form" id = "inputForm" action = "/sign" method = "post">
+                                <form role="form">
                                     <div class="col-xs-10">
-                                        <input type="text" name = "query" class="form-control" id="search" placeholder="Sports, Leisure, Anything you want!">
+                                        <input type="text" class="form-control" id="search" placeholder="Sports, Leisure, Anything you want!">
                                     </div>
-                                    <button id = "randoBtn" class="col-xs-2 btn btn-md btn-primary" onclick="">Un-bored Me!</button>
+                                    <button class="col-xs-2 btn btn-md btn-primary">Un-bored Me!</button>
                                 </form> 
                             </div>
                         </div>
@@ -60,17 +136,17 @@
                                     <li data-target="#carousel-example-generic" data-slide-to="2" class="active"></li>
                                 </ol>
                                 <div class="carousel-inner">
-                                    <div class="item">
+                                    <div class="item well active">
                                         <h1>Event 1</h1>
                                         <p>About event 1</p>
                                         <p>DATE: 01/01/2015</p>
                                     </div>
-                                    <div class="item">
+                                    <div class="item well">
                                         <h1>Event 2</h1>
                                         <p>About event 2</p>
                                         <p>DATE: 01/01/2015</p>
                                     </div>
-                                    <div class="item active">
+                                    <div class="item well">
                                         <h1>Event 3</h1>
                                         <p>About event 3</p>
                                         <p>DATE: 01/01/2015</p>
@@ -94,8 +170,8 @@
                     * 
                     ************************************************************
                     -->
-                    
-                    <!--<div class="row">
+                    <!--
+                    <div class="row">
                         <div class="col-xs-12">
                             <div class="panel panel-primary boxRounder">
                                 <div class="panel-heading eventRounder">
@@ -107,12 +183,11 @@
                                 </div>
                             </div>
                         </div>
-                    </div> -->
+                    </div>-->
                     
                     <!-- End of first dummy element -->
-
-                    
-                    <!--<div class="row">
+                    <!--
+                    <div class="row">
                         <div class="col-xs-12">
                             <div class="panel panel-primary boxRounder">
                                 <div class="panel-heading eventRounder">
@@ -137,26 +212,19 @@
                                 </div>
                             </div>
                         </div>
-                    </div>
+                    </div> -->
                 </div>
             </div>
-        </div>-->
-        <!-- Bootstrap and jQuery files -->
-        <!-- DO NOT SWITCH THE ORDER OF THESE INCLUDES -->
-        <script src="https://code.jquery.com/jquery-1.11.0.min.js" type="text/javascript"></script>
-        <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js" type="text/javascript"></script>
-        <script src = "scripts/getData.js" type = "text/javascript"></script>
+        </div>
+        <!-- Include JQuery for Bootstrap's JavaScript plugins. -->
+        <!-- THIS MUST BE FIRST BEFORE THE BOOTSTRAP JS FILE -->
+        <script src="https://code.jquery.com/jquery.js"></script>
+        <!-- Include Bootstrap JavaScript plugins. -->
+        <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
         <script>
             $( document ).ready(function() {
                 $("#carousel-example-generic").carousel();
             }); 
         </script> 
-        <script>
-    function init() {
-        google.appengine.samples.hello.init('//' + window.location.host + '/_ah/api');
-    }
-</script>
-<script src="https://apis.google.com/js/client.js?onload=init"></script>
     </body>
 </html>
-{% endautoescape %}
