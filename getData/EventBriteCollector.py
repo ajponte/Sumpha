@@ -13,13 +13,16 @@ class EventBriteCollector():
         self.city = city
         self.state = state
         self.query = query
-        self.url = self.getURL()
-        
-    def getURL(self):
+        self.url = self.createURL()
+    
+    def createURL(self):
         url = "https://www.eventbriteapi.com/v3/events/search/?q=" + self.query+ "&venue.city=" + self.city + "&token=RNNTBCERPT2RRYLC5C3U"
         return url
     
     def getJSON(self):
         data = requests.get(self.url).text
         return data
+
+	def getURL(self):
+		return self.url
         
