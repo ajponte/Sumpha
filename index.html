@@ -3,7 +3,7 @@
 <!--======================================================================================-->
 <!-- index.html                                                                           -->
 <!-- Created by Karlina Beringer and Ramin Tawakuli. July 19 and 20, 2014.                -->
-<!-- Edited by Alan Ponte																   -->
+<!-- Edited by Alan Ponte                                                                  -->
 <!--                                                                                      -->
 <!-- The user interface for the Sumpha app.                                               -->
 <!-- Learns about your interests to suggest the events you might want to participate in.  -->
@@ -138,19 +138,19 @@
                                 </ol>
                                 <div class="carousel-inner">
                                     <div class="item well active">
-                                        <h1>{% print jsonResults['results'][1]['name'] %}</h1>
-                                        <p>{% print jsonResults['results'][1]['description'] %}</p>
-                                        <a href = "#">{% print jsonResults['results'][1]['event_url'] %}</a>
+                                        <h1>{% print jsonResults['results'][5]['name'] %}</h1>
+                                        <p>{% print printLines(jsonResults['results'][5]['description'], 3)%}</p>
+                                        <a href = "#">{% print jsonResults['results'][5]['event_url'] %}</a>
                                     </div>
                                     <div class="item well">
-                                        <h1>{% print jsonResults['results'][2]['name'] %}</h1>
-                                        <p>{% print jsonResults['results'][2]['description'] %}</p>
-                                        <a href = "#">{% print jsonResults['results'][2]['event_url'] %}</a>
+                                        <h1>{% print jsonResults['results'][10]['name'] %}</h1>
+                                        <p>{% print printLines(jsonResults['results'][10]['description'], 3) %}</p>
+                                        <a href = "#">{% print jsonResults['results'][10]['event_url'] %}</a>
                                     </div>
                                     <div class="item well">
-                                        <h1>{% print jsonResults['results'][3]['name'] %}</h1>
-                                        <p>{% print jsonResults['results'][3]['description'] %}</p>
-                                        <a href = "#">{% print jsonResults['results'][3]['event_url'] %}</a>
+                                        <h1>{% print jsonResults['results'][6]['name'] %}</h1>
+                                        <p>{% print printLines(jsonResults['results'][6]['description'], 3) %}</p>
+                                        <a href = "#">{% print jsonResults['results'][6]['event_url'] %}</a>
                                     </div>
                                 </div>
                                 <a class="left carousel-control" href="#carousel-example-generic" role="button" data-slide="prev">

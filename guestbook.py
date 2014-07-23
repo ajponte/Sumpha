@@ -1,4 +1,7 @@
 # [START imports]
+import math
+import random
+
 import os
 import urllib
 import cgi
@@ -30,8 +33,33 @@ class MainPage(webapp2.RequestHandler):
         data = requests.get(TEST_QUERY).text
         jsonData = json.json.loads(data)
         template = JINJA_ENVIRONMENT.get_template('index.html', {})
+        def printLines(words, numLines):
+            """ Prints the first N lines from the String STR,
+                where N = numLines.
+            """
+            i = 0
+            lines = 0
+            strBuilder = ""
+            for word in words.split():
+                if i <= 5:
+                    strBuilder += (" " + word)
+                elif lines == numLines:
+                    break
+                else:
+                    strBuilder += "\n"
+                    numLines += 1
+                    i = 0
+            return strBuilder
+        def getRandom():
+            """ Returns a random integer X, such that
+                1 <= X <= 10
+            """
+            return math.floor(random.random() * 10)
+
         template_values = {
         'jsonResults': jsonData,
+        'printLines': printLines,
+        'randomNum': getRandom,
         }
         self.response.write(template.render(template_values))
 
