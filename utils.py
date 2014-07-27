@@ -12,7 +12,7 @@ def getRandom():
  	return math.floor(random.random() * 10)
 
 
-def printLines(words, numLines, wordsPerLine):
+def printLines(words, numLines, wordsPerLine = 5):
 	""" Prints the first N lines from the string 
 	    WORDS, where N = NUMLINES.  Each line has
 	    a maximum number of words, WORDSPERLINE.
