@@ -1,8 +1,4 @@
-<<<<<<< HEAD
-
-=======
 # [START imports]
->>>>>>> 8d63f5b16627a5fdfabb56f1c335e573b0e7656d
 import math
 import random
 
@@ -46,10 +42,7 @@ class MainPage(webapp2.RequestHandler):
         data = requests.get(TEST_QUERY).text
         jsonData = json.json.loads(data)
         template = JINJA_ENVIRONMENT.get_template('index.html', {})
-<<<<<<< HEAD
 
-
-=======
         def printLines(words, numLines):
             """ Prints the first N lines from the String STR,
                 where N = numLines.
@@ -72,7 +65,6 @@ class MainPage(webapp2.RequestHandler):
                 1 <= X <= 10
             """
             return math.floor(random.random() * 10)
->>>>>>> 8d63f5b16627a5fdfabb56f1c335e573b0e7656d
 
         template_values = {
         'jsonResults': jsonData,

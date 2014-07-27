@@ -13,14 +13,77 @@ class EventBriteCollector():
         self.city = city
         self.state = state
         self.query = query
-        self.url = self.getURL()
+        self.jsonData = self.getJSON()
         
-    def getURL(self):
+    def getResourceURL(self):
+        """ Returns the Resource URL used to prompt the REST API for JSON data. """
         url = "https://www.eventbriteapi.com/v3/events/search/?q=" + self.query+ "&venue.city=" + self.city + "&token=RNNTBCERPT2RRYLC5C3U"
         return url
     
     def getJSON(self):
-        jsonData = requests.get(self.url).text
+        jsonData = requests.get(self.getResourceURL()).text
         data = json.loads(jsonData) 
         return data
+    
+    def getData(self, key):
+        """ Returns the JSON data associated with the KEY. """
+        return self.jsonData[key]
+    
+    def getJSONdata(self):
+        """ Returns THIS EventBriteCollector's JSON String. """
+        return self.jsonData
+
+    def getKeys(self): 
+        """ Returns the Keys of the JSON String for 
+            THIS EventBRiteCollector. """
+        return self.jsonData.keys()
+
+    def getEventURL(self, eventNum):
+        """ Returns the URL for the event indicated by EVENTNUM. """
+        if eventNum > self.numEvents:
+            raise IndexError("There is no event numbered " + eventNum)
+        return self.jsonData['events'][eventNum]['url']
+    
+    def getEventURLs(self):
+        """ Returns a list of all the URLs for all events. """
+        urls = []
+        for i in range(0, self.numEvents + 1):
+            urls.append(self.jsonData['events'][i]['url'])
+        return urls
+    
+    def getEventDescription(self, eventNum): 
+        """ Returns the description for the event indicated by EVENTNUM."""
+        if eventNum > self.numEvents():
+            raise IndexError("There is no event numbered " + eventNum)
+        else:
+            return self.jsonData['events'][eventNum]['description']
+        
+    def getEventName(self, eventNum):
+        """ Returns the name of the Event indicated by EVENTNUM. """
+        if eventNum > self.numEvents:
+            raise IndexError("There is no event numbered " + eventNum)
+        else:
+            return self.jsonData['events'][eventNum]['name']['text']
+        
+    def getVenue(self, eventNum):
+        """ Returns the Venue of the Event indicated by EVENTNUM. """
+        if eventNum > self.numEvents:
+            raise IndexError("There is no event numbered " + eventNum)
+        else:
+            return self.jsonData['events'][eventNum]['venue']
+    
+    def getVenueName(self, eventNum):
+        """ Returns the name of the Venue of the event indicated by EVENTNUM. """
+        if eventNum > self.numEvents:
+            raise IndexError("There is no event numbered " + eventNum)
+        else:
+            return self.getVenue(eventNum)['name']
+    
+    @property
+    def numEvents(self):
+        """ Returns the number of events which are returned by a 
+            request to the API. """
+        return len(self.jsonData['events'])
+            
+    
         
