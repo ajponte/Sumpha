@@ -1,4 +1,8 @@
+<<<<<<< HEAD
 
+=======
+# [START imports]
+>>>>>>> 8d63f5b16627a5fdfabb56f1c335e573b0e7656d
 import math
 import random
 
@@ -14,9 +18,13 @@ import jinja2
 import webapp2
 import requests
 import EventBriteCollector
+<<<<<<< HEAD
 
 from getData import MeetupCollector
 from utils import getRandom, printLines
+=======
+import MeetupCollector
+>>>>>>> 8d63f5b16627a5fdfabb56f1c335e573b0e7656d
 
 """ Main Controller.  Resposible for rendering the main HTML and passing
     event information to the page.
@@ -38,8 +46,33 @@ class MainPage(webapp2.RequestHandler):
         data = requests.get(TEST_QUERY).text
         jsonData = json.json.loads(data)
         template = JINJA_ENVIRONMENT.get_template('index.html', {})
+<<<<<<< HEAD
 
 
+=======
+        def printLines(words, numLines):
+            """ Prints the first N lines from the String STR,
+                where N = numLines.
+            """
+            i = 0
+            lines = 0
+            strBuilder = ""
+            for word in words.split():
+                if i <= 5:
+                    strBuilder += (" " + word)
+                elif lines == numLines:
+                    break
+                else:
+                    strBuilder += "\n"
+                    numLines += 1
+                    i = 0
+            return strBuilder
+        def getRandom():
+            """ Returns a random integer X, such that
+                1 <= X <= 10
+            """
+            return math.floor(random.random() * 10)
+>>>>>>> 8d63f5b16627a5fdfabb56f1c335e573b0e7656d
 
         template_values = {
         'jsonResults': jsonData,
