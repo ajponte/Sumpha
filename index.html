@@ -59,6 +59,7 @@
         <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header">
+                    <!-- Submit button gets user input -->
                     <button type="button" class="close" data-dismiss="modal">
                         <span aria-hidden="true">&times;</span>
                         <span class="sr-only">Close</span>
@@ -128,9 +129,11 @@
                             <div class="row">
                                 <form action = "sign" method = "post" role="form">
                                     <div class="col-xs-10">
-                                        <input type="text" class="form-control" id="search" placeholder="Sports, Leisure, Anything you want!">
+                                        <input type="text" id="textField" class="form-control" id="textField" name="textField" placeholder="Sports, leisure, anything you want!">
                                     </div>
-                                    <button class="col-xs-2 btn btn-md btn-primary">Un-bored Me!</button>
+                                    <button class="col-xs-2 btn btn-md btn-primary" id="myButton" onclick="buttonClick(this.parentNode);">
+                                        Un-bored Me!
+                                    </button>
                                 </form> 
                             </div>
                         </div>
@@ -237,6 +240,13 @@
                 $("#carousel-example-generic").carousel();
             }); 
         </script> 
+        <script type="text/javascript">
+          function buttonClick(input) {
+            alert("Butts");
+            var text = input.textField;
+
+          }
+        </script>
     </body>
 </html>
 {% endautoescape %}
