@@ -1,6 +1,8 @@
+
 # [START imports]
 import math
 import random
+import re
 
 import os
 import urllib
@@ -14,13 +16,10 @@ import jinja2
 import webapp2
 import requests
 import EventBriteCollector
-<<<<<<< HEAD
 
-from getData import MeetupCollector
-from utils import getRandom, printLines
-=======
-import MeetupCollector
->>>>>>> 8d63f5b16627a5fdfabb56f1c335e573b0e7656d
+
+from getData import MeetupCollector, EventBriteCollector
+from utils import getRandom, printLines, createMeetupCollector, createEventBriteCollector, numEvents
 
 """ Main Controller.  Resposible for rendering the main HTML and passing
     event information to the page.
@@ -43,29 +42,6 @@ class MainPage(webapp2.RequestHandler):
         jsonData = json.json.loads(data)
         template = JINJA_ENVIRONMENT.get_template('index.html', {})
 
-        def printLines(words, numLines):
-            """ Prints the first N lines from the String STR,
-                where N = numLines.
-            """
-            i = 0
-            lines = 0
-            strBuilder = ""
-            for word in words.split():
-                if i <= 5:
-                    strBuilder += (" " + word)
-                elif lines == numLines:
-                    break
-                else:
-                    strBuilder += "\n"
-                    numLines += 1
-                    i = 0
-            return strBuilder
-        def getRandom():
-            """ Returns a random integer X, such that
-                1 <= X <= 10
-            """
-            return math.floor(random.random() * 10)
-
         template_values = {
         'jsonResults': jsonData,
         'printLines': printLines,
@@ -83,14 +59,41 @@ class ShowEvents(webapp2.RequestHandler):
         # is in the same entity group. Queries across the single entity group
         # will be consistent. However, the write rate to a single entity group
         # should be limited to ~1/second.
+        data = requests.get(TEST_QUERY).text
+        jsonData = json.json.loads(data)
+        template = JINJA_ENVIRONMENT.get_template('showEvents.html', {})
 
-        self.redirect('/')
+        query = cgi.escape(self.request.get('query'))
+
+        #eventBriteCllctr = createEventBriteCollector("san+francisco", "ca", "jazz+music")
+        meetupCllctr = createMeetupCollector("san+francisco", "ca", query)
 
 
+        #numberEvents = numEvents(meetupCllctr.numEvents, eventBriteCllctr.numEvents)
+        ranNum = getRandom(10)
+        eventName1 = meetupCllctr.getEventName(ranNum)
+        description1 = meetupCllctr.getDescription(ranNum)
+
+        ranNumPrime = getRandom(10)
+        eventName2 = meetupCllctr.getEventName(ranNumPrime)
+        description2 = meetupCllctr.getDescription(ranNumPrime)
+
+        template_values = {
+        'jsonResults': jsonData,
+        'printLines': printLines,
+        'randomNum': getRandom,
+        'query': query,
+        'eventName1':eventName1,
+        'description1': description1,
+        'eventName2': eventName2,
+        'description2': description2
+        }
+
+        self.response.write(template.render(template_values))
 
 
 application = webapp2.WSGIApplication([
     ('/', MainPage),
-    ('/', ShowEvents),
+    ('/sign', ShowEvents),
    
 ], debug=True)

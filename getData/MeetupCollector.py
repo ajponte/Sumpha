@@ -44,14 +44,14 @@ class MeetupCollector():
     
     def getDescription(self, eventNum):
         """ Returns the descripton for the event indicated by EVENTNUM. """
-        if self.numEvents() < eventNum:
+        if self.numEvents < eventNum:
             raise IndexError("No event numbered " + eventNum)
         else:
             return self.JSONdata['results'][eventNum]['description']
     
     def getEventURL(self, eventNum):
         """ Returns the Event's URL for the Event indicated by EVENTNUM. """
-        if self.numEvents() < eventNum:
+        if self.numEvents < eventNum:
             raise IndexError("No event numbered " + eventNum)
         else:
             return self.JSONdata['results'][eventNum]['event_url']
@@ -65,7 +65,7 @@ class MeetupCollector():
     
     def getEventName(self, eventNum):
         """ Returns the Event name for the Event indicated by EVENTNUM. """
-        if self.numEvents() < eventNum:
+        if self.numEvents < eventNum:
             raise IndexError("No event numbered " + eventNum)
         else:
             return self.JSONdata['results'][eventNum]['name']
