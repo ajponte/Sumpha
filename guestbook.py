@@ -1,10 +1,8 @@
-<<<<<<< HEAD
 
-=======
 # [START imports]
->>>>>>> 8d63f5b16627a5fdfabb56f1c335e573b0e7656d
 import math
 import random
+import re
 
 import os
 import urllib
@@ -18,13 +16,11 @@ import jinja2
 import webapp2
 import requests
 import EventBriteCollector
-<<<<<<< HEAD
+
 
 from getData import MeetupCollector
 from utils import getRandom, printLines
-=======
 import MeetupCollector
->>>>>>> 8d63f5b16627a5fdfabb56f1c335e573b0e7656d
 
 """ Main Controller.  Resposible for rendering the main HTML and passing
     event information to the page.
@@ -46,33 +42,35 @@ class MainPage(webapp2.RequestHandler):
         data = requests.get(TEST_QUERY).text
         jsonData = json.json.loads(data)
         template = JINJA_ENVIRONMENT.get_template('index.html', {})
-<<<<<<< HEAD
 
-
-=======
-        def printLines(words, numLines):
-            """ Prints the first N lines from the String STR,
-                where N = numLines.
+        def printLines(textInput):
+            """ Returns the first 140 characters of textInput.
+                If textInput exceeds 140 characters, cut off at the nearest 'whole word'
+                and insert a '...' at the end of the string.
             """
-            i = 0
-            lines = 0
+            numChars = 0
             strBuilder = ""
-            for word in words.split():
-                if i <= 5:
-                    strBuilder += (" " + word)
-                elif lines == numLines:
-                    break
+
+            textInput = re.sub('<[^>]*>', '', textInput)
+
+            """ for each word in textInput, count the number of characters.
+                If the number of characters exceeds 140, then return to the nearest 'whole word.'
+            """
+            for word in textInput.split():
+                numChars += len( word )
+                numChars += 1 # adds 1 for space between words 
+                if numChars <= 140:
+                    strBuilder += word 
+                    strBuilder += ' '
                 else:
-                    strBuilder += "\n"
-                    numLines += 1
-                    i = 0
-            return strBuilder
+                    return strBuilder
+            return strBuilder + '...'
+
         def getRandom():
             """ Returns a random integer X, such that
                 1 <= X <= 10
             """
-            return math.floor(random.random() * 10)
->>>>>>> 8d63f5b16627a5fdfabb56f1c335e573b0e7656d
+            return math.floor(random.random() * 13)
 
         template_values = {
         'jsonResults': jsonData,
@@ -93,9 +91,6 @@ class ShowEvents(webapp2.RequestHandler):
         # should be limited to ~1/second.
 
         self.redirect('/')
-
-
-
 
 application = webapp2.WSGIApplication([
     ('/', MainPage),
