@@ -1,12 +1,10 @@
 {% autoescape False %}
 <!DOCTYPE html>
 <!--======================================================================================-->
-<!-- index.html                                                                           -->
-<!-- Created by Karlina Beringer and Ramin Tawakuli. July 19 and 20, 2014.                -->                                                              -->
-<!-- Edited by Alan Pointe and Karlina Beringer on July 27, 2014.                         -->
-<!--                                                                                      -->
-<!-- The user interface for the Sumpha app.                                               -->
-<!-- Learns about your interests to suggest the events you might want to participate in.  -->
+<!-- showEvents.html                                                                       -->
+<!-- Created by Alan Ponte                                                               
+<!-->                                                                                      
+<!-- This page is shown as a result of a search query                                            -->
 <!--======================================================================================-->
 <html lang="en">
     <head>
@@ -202,6 +200,9 @@
                                 <div class="panel-body">
                                     <p>{%print description1 %}</p>
                                 </div>
+                                <div class="panel-body">
+                                    <p>{%print url1%}</p>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -217,22 +218,27 @@
                                 <div class="panel-body">
                                     <p>{%print description2 %}</p>
                                 </div>
+                                 <div class="panel-body">
+                                    <p>{%print url2%}<p>
+                                </div>
                             </div>
                         </div>
                     </div>
-                    <!--<div class="row">
+                    <<div class="row">
                         <div class="col-xs-12">
                             <div class="panel panel-primary boxRounder">
                                 <div class="panel-heading eventRounder">
-                                    <h1 class="panel-title">Event 6</h1>
+                                    <h1 class="panel-title">{%print eventName3%}</h1>
                                 </div>
                                 <div class="panel-body">
-                                    <p>About event 6</p>
-                                    <p>DATE: 01/01/2015</p>
+                                    <p>{%print description3%}</p>
+                                </div>
+                                <div class="panel-body">
+                                    <p>{%print url3%}<p>
                                 </div>
                             </div>
                         </div>
-                    </div> -->
+                    </div> 
                 </div>
             </div>
         </div>

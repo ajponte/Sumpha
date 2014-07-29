@@ -8,6 +8,20 @@ from getData import MeetupCollector, EventBriteCollector
     @author Alan Ponte
 """
 
+def replaceSpaces(query):
+	""" For each word in QUERY, remove
+	    all spaces and insert a '+'
+	    between the words.
+	"""
+	words = query.strip().split()
+	strBuilder = ""
+	size = len(words)
+	if size > 1:
+		word1 = words[0]
+		word2 = words[1]
+		strBuilder = word1 + "+" + word2
+	return strBuilder
+
 def numEvents(meetupCllctr, eventBriteCllctr):
 	""" Returns the maximum number of events from MEETUPCLLCTR
 	    or EVENTBRITECLLCTR, whichever is higher.
@@ -38,12 +52,13 @@ def createEventBriteCollector(city, state, query):
 	return ec
 
 def main():
-	mc = MeetupCollector.MeetupCollector("san+francisco", "ca", "jazz+music")
+	'''mc = MeetupCollector.MeetupCollector("san+francisco", "ca", "jazz+music")
 	ec = EventBriteCollector.EventBriteCollector("san+francisco", "ca", "jazz+music")
 	nEvents = numEvents(mc, ec)
 	print nEvents
 
-	print(getRandom(nEvents))
+	print(getRandom(nEvents))'''
+	print replaceSpaces("jazz   music play")
 
 
 

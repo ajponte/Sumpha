@@ -1,4 +1,12 @@
 
+''' Controller for the Sumpha App. 
+    Renders and serves index.html.
+    Passes JSON data to the html, for 
+    displaying the results.
+
+    @author Alan Ponte 
+'''
+
 # [START imports]
 import math
 import random
@@ -19,7 +27,7 @@ import EventBriteCollector
 
 
 from getData import MeetupCollector, EventBriteCollector
-from utils import getRandom, printLines, createMeetupCollector, createEventBriteCollector, numEvents
+from utils import getRandom, printLines, createMeetupCollector, createEventBriteCollector, numEvents, replaceSpaces
 
 """ Main Controller.  Resposible for rendering the main HTML and passing
     event information to the page.
@@ -31,6 +39,7 @@ JINJA_ENVIRONMENT = jinja2.Environment(
     extensions=['jinja2.ext.autoescape'],
     autoescape=True)
 
+API_KEY = "2a1375761e5858197f2c1d546f417342"
 TEST_QUERY = "http://api.meetup.com/2/open_events?status=upcoming&radius=25.0&state=ca&and_text=False&limited_events=False&text=jazz+music&desc=False&city=san+francisco&offset=0&photo-host=public&format=json&page=20&country=us&sig_id=14329201&sig=e31eef1653769211053be6849d5285b63f0593f6"
 jsonResults = None
 
@@ -64,7 +73,7 @@ class ShowEvents(webapp2.RequestHandler):
         template = JINJA_ENVIRONMENT.get_template('showEvents.html', {})
 
         query = cgi.escape(self.request.get('query'))
-
+        #query = str(replaceSpaces(query))
         #eventBriteCllctr = createEventBriteCollector("san+francisco", "ca", "jazz+music")
         meetupCllctr = createMeetupCollector("san+francisco", "ca", query)
 
@@ -73,10 +82,17 @@ class ShowEvents(webapp2.RequestHandler):
         ranNum = getRandom(10)
         eventName1 = meetupCllctr.getEventName(ranNum)
         description1 = meetupCllctr.getDescription(ranNum)
+        url1 = meetupCllctr.getEventURL(ranNum)
 
         ranNumPrime = getRandom(10)
         eventName2 = meetupCllctr.getEventName(ranNumPrime)
         description2 = meetupCllctr.getDescription(ranNumPrime)
+        url2 = meetupCllctr.getEventURL(ranNumPrime)
+
+        ranNumPrimePrime = getRandom(10)
+        eventName3 = meetupCllctr.getEventName(ranNumPrimePrime)
+        description3 = meetupCllctr.getDescription(ranNumPrimePrime)
+        url3 = meetupCllctr.getEventURL(ranNumPrimePrime)
 
         template_values = {
         'jsonResults': jsonData,
@@ -86,7 +102,12 @@ class ShowEvents(webapp2.RequestHandler):
         'eventName1':eventName1,
         'description1': description1,
         'eventName2': eventName2,
-        'description2': description2
+        'description2': description2,
+        'eventName3': eventName3,
+        'description3': description3,
+        'url1': url1,
+        'url2': url2,
+        'url3': url3
         }
 
         self.response.write(template.render(template_values))
