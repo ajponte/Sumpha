@@ -11,6 +11,7 @@
 <html lang="en">
     <head>
         <title> Sumpha! </title>
+        <link rel="icon" href="images/faviconTrnsBkgd.ico">
         <!-- Bootstrap CSS files -->
         <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css" type="text/css">
         <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css" type="text/css">
@@ -49,6 +50,13 @@
                 padding-right: 75px;
                 padding-top: 10px;
                 padding-bottom: 10px;
+            }
+
+            #footer {
+                clear: both;
+                padding: 10px;
+                color: white;
+                text-align: center;
             }
 
         </style>
@@ -130,6 +138,9 @@
                                 <form action = "/sign" method = "post" role="form">
                                     <div class="col-xs-10">
                                         <input type="text" name = "query" id="textField" class="form-control" id="textField" name="textField" placeholder="Sports, leisure, anything you want!">
+                                    </div>
+                                    <div class = "col-xs-10">
+                                        <!--<input type = "text" name "cityQuery" id = "cityTextField" class = "form-control" id = "cityTextField" placeholder = "Enter your city.  Berkeley, Oakland, San Francisco...">-->    
                                     </div>
                                     <button class="col-xs-2 btn btn-md btn-primary" id="myButton">
                                         Un-bored Me!
@@ -229,6 +240,9 @@
                     </div> -->
                 </div>
             </div>
+                <div id="footer">
+                    Created at Silicon Valley AngelHack 2014
+                </div>
         </div>
         <!-- Include JQuery for Bootstrap's JavaScript plugins. -->
         <!-- THIS MUST BE FIRST BEFORE THE BOOTSTRAP JS FILE -->
