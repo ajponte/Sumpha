@@ -127,7 +127,7 @@
                             <h1>Sumpha!</h1>
                             <p>Find sumphin' to do! Just enter what you like.</p>
                             <div class="row">
-                                <form action = "showEvents.html" method = "post" role="form">
+                                <form action = "/sign" method = "post" role="form">
                                     <div class="col-xs-10">
                                         <input type="text" name = "query" id="textField" class="form-control" id="textField" name="textField" placeholder="Sports, leisure, anything you want!">
                                     </div>
@@ -151,19 +151,19 @@
                                 </ol>
                                 <div class="carousel-inner">
                                     <div class="item well active">
-                                        <h4>{% print jsonResults['results'][0]['name'] %}</h4>
-                                        <p>{% print printLines(jsonResults['results'][0]['description'])%}</p>
-                                        <a href = "#">{% print jsonResults['results'][0]['event_url'] %}</a>
+                                        <h4>{% print data[0]['title'] %}</h4>
+                                        <p>{% print printLines(data[0]['description'])%}</p>
+                                        <a href = "#">{% print data[0]['url'] %}</a>
                                     </div>
                                     <div class="item well">
-                                        <h4>{% print jsonResults['results'][1]['name'] %}</h4>
-                                        <p>{% print printLines(jsonResults['results'][1]['description']) %}</p>
-                                        <a href = "#">{% print jsonResults['results'][1]['event_url'] %}</a>
+                                        <h4>{% print data[1]['title'] %}</h4>
+                                        <p>{% print printLines(data[1]['description'])%}</p>
+                                        <a href = "#">{% print data[1]['url'] %}</a>
                                     </div>
                                     <div class="item well">
-                                        <h4>{% print jsonResults['results'][1]['name'] %}</h4>
-                                        <p>{% print printLines(jsonResults['results'][2]['description']) %}</p>
-                                        <a href = "#">{% print jsonResults['results'][2]['event_url'] %}</a>
+                                        <h4>{% print data[2]['title'] %}</h4>
+                                        <p>{% print printLines(data[2]['description'])%}</p>
+                                        <a href = "#">{% print data[2]['url'] %}</a>
                                     </div>
                                 </div>
                                 <a class="left carousel-control" href="#carousel-example-generic" role="button" data-slide="prev">

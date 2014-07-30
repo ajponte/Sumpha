@@ -24,6 +24,9 @@ import jinja2
 import webapp2
 import requests
 import EventBriteCollector
+import getEventData
+import Defaults
+import utils
 
 
 from getData import MeetupCollector, EventBriteCollector
@@ -47,12 +50,10 @@ jsonResults = None
 class MainPage(webapp2.RequestHandler):
 
     def get(self):
-        data = requests.get(TEST_QUERY).text
-        jsonData = json.json.loads(data)
+        data = getEventData.getEventBriteData("Oakland", "Music", "DYVEWBELHOJDXT7VPS")
         template = JINJA_ENVIRONMENT.get_template('index.html', {})
-
         template_values = {
-        'jsonResults': jsonData,
+        'data': data,
         'printLines': printLines,
         'randomNum': getRandom,
         }
@@ -68,34 +69,39 @@ class ShowEvents(webapp2.RequestHandler):
         # is in the same entity group. Queries across the single entity group
         # will be consistent. However, the write rate to a single entity group
         # should be limited to ~1/second.
-        data = requests.get(TEST_QUERY).text
-        jsonData = json.json.loads(data)
+        #data = requests.get(TEST_QUERY).text
+        city = "San francisco"
         template = JINJA_ENVIRONMENT.get_template('showEvents.html', {})
 
         query = cgi.escape(self.request.get('query'))
+        data = getEventData.getEventBriteData(replaceSpaces(city), replaceSpaces(query), "DYVEWBELHOJDXT7VPS")
+        data = utils.fisherYates(data)
         #query = str(replaceSpaces(query))
         #eventBriteCllctr = createEventBriteCollector("san+francisco", "ca", "jazz+music")
-        meetupCllctr = createMeetupCollector("san+francisco", "ca", query)
+        #meetupCllctr = createMeetupCollector("san+francisco", "ca", query)
 
 
         #numberEvents = numEvents(meetupCllctr.numEvents, eventBriteCllctr.numEvents)
-        ranNum = getRandom(10)
-        eventName1 = meetupCllctr.getEventName(ranNum)
-        description1 = meetupCllctr.getDescription(ranNum)
-        url1 = meetupCllctr.getEventURL(ranNum)
 
-        ranNumPrime = getRandom(10)
-        eventName2 = meetupCllctr.getEventName(ranNumPrime)
-        description2 = meetupCllctr.getDescription(ranNumPrime)
-        url2 = meetupCllctr.getEventURL(ranNumPrime)
+        ranNum = getRandom(len(data)-1)
+        eventName1 = data[0]['title']
+        description1 = data[0]['description']
+        url1 = data[0]['url']
 
-        ranNumPrimePrime = getRandom(10)
-        eventName3 = meetupCllctr.getEventName(ranNumPrimePrime)
-        description3 = meetupCllctr.getDescription(ranNumPrimePrime)
-        url3 = meetupCllctr.getEventURL(ranNumPrimePrime)
+        ranNumPrime = getRandom(len(data))
+        eventName2 = data[1]['title']
+        description2 = data[1]['description']
+        url2 = data[1]['url']
+
+        ranNumPrimePrime = getRandom(len(data))
+        eventName3 = data[2]['title']
+        description3 = data[2]['description']
+        url3 = data[2]['url']
 
         template_values = {
-        'jsonResults': jsonData,
+        'city': city,
+        'data': data,
+        'jsonResults': {},
         'printLines': printLines,
         'randomNum': getRandom,
         'query': query,
@@ -109,7 +115,6 @@ class ShowEvents(webapp2.RequestHandler):
         'url2': url2,
         'url3': url3
         }
-
         self.response.write(template.render(template_values))
 
 

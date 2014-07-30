@@ -1,4 +1,5 @@
 import random
+from random import randrange
 import math
 import re
 
@@ -8,19 +9,14 @@ from getData import MeetupCollector, EventBriteCollector
     @author Alan Ponte
 """
 
+
 def replaceSpaces(query):
 	""" For each word in QUERY, remove
 	    all spaces and insert a '+'
 	    between the words.
 	"""
-	words = query.strip().split()
-	strBuilder = ""
-	size = len(words)
-	if size > 1:
-		word1 = words[0]
-		word2 = words[1]
-		strBuilder = word1 + "+" + word2
-	return strBuilder
+	words = query.split();
+	return '+'.join(words)
 
 def numEvents(meetupCllctr, eventBriteCllctr):
 	""" Returns the maximum number of events from MEETUPCLLCTR
@@ -58,7 +54,23 @@ def main():
 	print nEvents
 
 	print(getRandom(nEvents))'''
-	print replaceSpaces("jazz   music play")
+	#print replaceSpaces("jazz   music play")
+	print(replaceSpaces("jazz music"))
+
+
+def fisherYates(lst):
+	""" Performs a non-destructive Fisher-Yates shuffle 
+		on the list LST.  The shuffle makes all elements 
+		in the list such that they are all equally likely 
+	    to be chosen, given any integer 0<=X<len(LST).
+	"""
+	i = len(lst)
+	newList = lst
+	while i > 1:
+		i = i - 1
+		j = randrange(i) #0<=j<=i-1
+		newList[j], newList[i] = newList[i], newList[j]
+	return newList 
 
 
 

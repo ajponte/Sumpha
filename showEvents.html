@@ -90,7 +90,6 @@
             </div>
         </div>
     </div>
-
     <!-- Top level container from bootstrap -->
     <div class="container">
 
@@ -121,66 +120,11 @@
                 <!-- Show Results of finding events-->
                 <div class="row">
                     <div class="jumbotron col-md-12">
-                        <h2> Showing Results for {%print query%}:</h2>
+                        <h2> Showing Results for {%print query%} in {%print city%}:</h2>
                         <p></p>
                     </div>
 
                 </div>
-            
-                    <!-- first row with page jumbotron -->
-                    <!--<div class="row">
-                        <div class="jumbotron col-md-12"> 
-                            <h1>Sumpha!</h1>
-                            <p>Find sumphin' to do! Just enter what you like.</p>
-                            <div class="row">
-                                <form action = "/sign" method = "post" role="form">
-                                    <div class="col-xs-10">
-                                        <input type="text" name = "query" id="textField" class="form-control" id="textField" name="textField" placeholder="Sports, leisure, anything you want!">
-                                    </div>
-                                    <button class="col-xs-2 btn btn-md btn-primary" id="myButton">
-                                        Un-bored Me!
-                                    </button>
-                                </form> 
-                            </div>
-                        </div>
-                    </div>-->
-                    
-                    <!-- Random single event grabber and carousel -->
-                    <!--<div class="row"  style="margin-bottom: 50px">
-                        <div class="col-xs-12" class="padding">
-                            <h2 class="well boxRounder" style="margin: 0px 0px 10px 0px">Events happening near you!</h2>
-                            <div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
-                                <ol class="carousel-indicators">
-                                    <li data-target="#carousel-example-generic" data-slide-to="0" class=""></li>
-                                    <li data-target="#carousel-example-generic" data-slide-to="1" class=""></li>
-                                    <li data-target="#carousel-example-generic" data-slide-to="2" class="active"></li>
-                                </ol>
-                                <div class="carousel-inner">
-                                    <div class="item well active">
-                                        <h4>{% print jsonResults['results'][0]['name'] %}</h4>
-                                        <p>{% print printLines(jsonResults['results'][0]['description'])%}</p>
-                                        <a href = "#">{% print jsonResults['results'][0]['event_url'] %}</a>
-                                    </div>
-                                    <div class="item well">
-                                        <h4>{% print jsonResults['results'][1]['name'] %}</h4>
-                                        <p>{% print printLines(jsonResults['results'][1]['description']) %}</p>
-                                        <a href = "#">{% print jsonResults['results'][1]['event_url'] %}</a>
-                                    </div>
-                                    <div class="item well">
-                                        <h4>{% print jsonResults['results'][1]['name'] %}</h4>
-                                        <p>{% print printLines(jsonResults['results'][2]['description']) %}</p>
-                                        <a href = "#">{% print jsonResults['results'][2]['event_url'] %}</a>
-                                    </div>
-                                </div>
-                                <a class="left carousel-control" href="#carousel-example-generic" role="button" data-slide="prev">
-                                    <span class="glyphicon glyphicon-chevron-left"></span>
-                                </a>
-                                <a class="right carousel-control" href="#carousel-example-generic" role="button" data-slide="next">
-                                    <span class="glyphicon glyphicon-chevron-right"></span>
-                                </a>
-                            </div>
-                        </div>
-                    </div>-->
                     
                     <!--
                     ************************************************************
